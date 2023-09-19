@@ -16,7 +16,7 @@ public class EventSimulationImpl implements EventSimulation{
             cocktailParty(random, staff);
         }
         else if(type == EventType.WEDDING) {
-
+            wedding(random, staff);
         }
     }
 
@@ -32,12 +32,24 @@ public class EventSimulationImpl implements EventSimulation{
     }
 
     private void wedding(Random random, List<Employee> staff) {
-        int
+        int isCakePresent = random.nextInt(1);
+        if(isCakePresent != 1) {
+            System.out.println("Wedding failed, forgot cake");
+            String chief = selectChief(getOrganizers(staff));
+            System.out.println("The chief organiser is: " + chief);
+        }
+        else {
+            System.out.println("Successful wedding");
+            String chief = selectChief(getOrganizers(staff));
+            System.out.println("The chief organiser is: " + chief);
+        }
     }
 
     private String selectChief(List<Employee> organisers) {
         Random random = new Random();
-        return organisers.get(random.nextInt(organisers.size())).getName();
+        int selectedOrganiser = random.nextInt(organisers.size());
+        organisers.get(selectedOrganiser).setOrgHistory(organisers.get(selectedOrganiser).getOrgHistory() + 1);
+        return organisers.get(selectedOrganiser).getName();
     }
     private List<Employee> getOrganizers(List<Employee> staff) {
         return staff.stream()

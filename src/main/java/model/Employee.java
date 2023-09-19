@@ -24,4 +24,8 @@ public class Employee {
     public int getOrgHistory() {
         return OrgHistory;
     }
+
+    public void setOrgHistory(int orgHistory) {
+        OrgHistory = orgHistory;
+    }
 }
