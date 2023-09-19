@@ -3,7 +3,7 @@ import model.repository.EventOrg;
 import service.EventSimulation;
 import service.EventSimulationImpl;
 
-import java.util.List;
+
 import java.util.Random;
 
 public class Application {
