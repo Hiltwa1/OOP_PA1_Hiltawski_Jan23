@@ -13,14 +13,37 @@ public class EventSimulationImpl implements EventSimulation{
     @Override
     public void organiseEvent(EventType type, List<Employee> staff, List<Guest> guests) {
         Random random = new Random();
-        if (type == EventType.COCKTAIL_PARTY) {
-            cocktailParty(random, staff);
-        }
-        else if(type == EventType.WEDDING) {
-            wedding(random, staff);
-        }
-        else if (type == EventType.CONFERENCE) {
+        if (checkStaff(staff) == true) {
+            if (type == EventType.COCKTAIL_PARTY) {
+                cocktailParty(random, staff);
+            } else if (type == EventType.WEDDING) {
+                wedding(random, staff);
+            } else if (type == EventType.CONFERENCE) {
 
+            }
+        }
+        else {
+            System.out.println("The company is understaffed and can't organise events");
+        }
+    }
+
+    private boolean checkStaff(List<Employee> staff) {
+        int helperAmount = 0;
+        int organiserAmount = 0;
+        for (Employee employee: staff
+             ) {
+            if (employee.getRole() == Role.HELPER) {
+                helperAmount++;
+            }
+            else if (employee.getRole() == Role.ORGANISER) {
+                organiserAmount++;
+            }
+        }
+        if (helperAmount >= 10 && organiserAmount >= 3) {
+            return true;
+        }
+        else {
+            return false;
         }
     }
 
@@ -30,7 +53,7 @@ public class EventSimulationImpl implements EventSimulation{
         System.out.println("The chief organiser is: " + chief);
         System.out.println("The cocktail stock is: " + cocktailStock);
         for (int i = 0; i < random.nextInt(29); i++) {
-            --cocktailStock;
+            cocktailStock--;
             System.out.println("Guest requested a cocktail, remaining cocktails: " + cocktailStock);
         }
     }
