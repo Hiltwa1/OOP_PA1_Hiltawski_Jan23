@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface EventSimulation {
     void organiseEvent(EventType type, List<Employee> staff, List<Guest> guests);
+    String mostTimesChief(List<Employee> staff);
 }

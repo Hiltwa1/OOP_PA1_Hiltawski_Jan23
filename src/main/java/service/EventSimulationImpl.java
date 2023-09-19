@@ -5,7 +5,9 @@ import model.Guest;
 import model.enums.EventType;
 import model.enums.Role;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 import java.util.stream.Collectors;
 
@@ -25,6 +27,13 @@ public class EventSimulationImpl implements EventSimulation{
         else {
             System.out.println("The company is understaffed and can't organise events");
         }
+    }
+
+    @Override
+    public String mostTimesChief(List<Employee> staff) {
+    Employee topChief= staff.stream()
+                .max(Comparator.comparingInt(Employee::getOrgHistory)).get();
+            return topChief.getName();
     }
 
     private boolean checkStaff(List<Employee> staff) {
