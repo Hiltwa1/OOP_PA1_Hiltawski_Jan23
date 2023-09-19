@@ -15,6 +15,6 @@ public class Application {
             eventSimulation.organiseEvent(EventType.WEDDING, EventOrg.staff, EventOrg.guests);
             eventSimulation.organiseEvent(EventType.COCKTAIL_PARTY, EventOrg.staff, EventOrg.guests);
         }
-        eventSimulation.mostTimesChief(EventOrg.staff);
+        System.out.println(eventSimulation.mostTimesChief(EventOrg.staff));
     }
 }
