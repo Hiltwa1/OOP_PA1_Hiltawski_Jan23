@@ -68,7 +68,7 @@ public class EventSimulationImpl implements EventSimulation{
     }
 
     private void wedding(Random random, List<Employee> staff) {
-        int isCakePresent = random.nextInt(1);
+        int isCakePresent = random.nextInt(2);
         if(isCakePresent != 1) {
             System.out.println("Wedding failed, forgot cake");
             String chief = selectChief(getOrganizers(staff));
@@ -84,10 +84,11 @@ public class EventSimulationImpl implements EventSimulation{
     private void conference(Random random, List<Employee> staff, List<Guest> guests){
         for (Guest guest: guests
              ) {
-            int wantsGoodies = random.nextInt(1);
+            int wantsGoodies = random.nextInt(2);
             if (wantsGoodies == 1) {
                 if(guest.getHadAGoodieBag() == false) {
                     guest.setHadAGoodieBag(true);
+                    System.out.println("Guest took a goodie bag");
                 }
             }
         }
