@@ -1,6 +1,7 @@
 package service;
 
 import model.Employee;
+import model.Guest;
 import model.enums.EventType;
 import model.enums.Role;
 
@@ -10,13 +11,16 @@ import java.util.stream.Collectors;
 
 public class EventSimulationImpl implements EventSimulation{
     @Override
-    public void organiseEvent(EventType type, List<Employee> staff) {
+    public void organiseEvent(EventType type, List<Employee> staff, List<Guest> guests) {
         Random random = new Random();
         if (type == EventType.COCKTAIL_PARTY) {
             cocktailParty(random, staff);
         }
         else if(type == EventType.WEDDING) {
             wedding(random, staff);
+        }
+        else if (type == EventType.CONFERENCE) {
+
         }
     }
 
@@ -43,6 +47,21 @@ public class EventSimulationImpl implements EventSimulation{
             String chief = selectChief(getOrganizers(staff));
             System.out.println("The chief organiser is: " + chief);
         }
+    }
+
+    private void conference(Random random, List<Employee> staff, List<Guest> guests){
+        for (Guest guest: guests
+             ) {
+            int wantsGoodies = random.nextInt(1);
+            if (wantsGoodies == 1) {
+                if(guest.getHadAGoodieBag() == false) {
+                    guest.setHadAGoodieBag(true);
+                }
+            }
+        }
+        System.out.println("Successful conference");
+        String chief = selectChief(getOrganizers(staff));
+        System.out.println("The chief organiser is: " + chief);
     }
 
     private String selectChief(List<Employee> organisers) {

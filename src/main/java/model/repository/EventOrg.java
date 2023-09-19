@@ -1,6 +1,7 @@
 package model.repository;
 
 import model.Employee;
+import model.Guest;
 import model.enums.Role;
 
 import java.util.ArrayList;
@@ -24,6 +25,27 @@ public interface EventOrg {
                     new Employee("K", Role.ORGANISER, 0),
                     new Employee("L", Role.ORGANISER, 0),
                     new Employee("N", Role.ORGANISER, 0)
+            )
+    );
+    List<Guest> guests = new ArrayList<>(
+            Arrays.asList(
+                    new Guest(false),
+                    new Guest(false),
+                    new Guest(false),
+                    new Guest(false),
+                    new Guest(false),
+                    new Guest(false),
+                    new Guest(false),
+                    new Guest(false),
+                    new Guest(false),
+                    new Guest(false),
+                    new Guest(false),
+                    new Guest(false),
+                    new Guest(false),
+                    new Guest(false),
+                    new Guest(false),
+                    new Guest(false),
+                    new Guest(false)
             )
     );
 }
